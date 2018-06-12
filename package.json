@@ -18,6 +18,9 @@
   "homepage": "https://github.com/KaylaVincenzetti/project-two#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "expresss": "0.0.0"
+    "expresss": "0.0.0",
+    "inquirer": "^6.0.0",
+    "mysql": "^2.15.0",
+    "sequelize": "^4.37.10"
   }
 }
