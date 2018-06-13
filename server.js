@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 var mysql = require('mysql');
+var bodyParser = require('body-parser');
 
 
 
@@ -20,16 +21,36 @@ connection.connect(function(err,res){
 });
 
 app.get("/", function(req, res) {
-    
     res.sendFile(path.join(__dirname, "index.html"));
+  });
+
+  
+app.get("/men.html", function(req, res) {
+    
+    res.sendFile(path.join(__dirname, "men.html"));
+  });
+
+  app.get("/women.html", function(req, res) {
+    
+    res.sendFile(path.join(__dirname, "women.html"));
+  });
+
+  app.get("/store.js", function(req, res) {
+    
+    res.sendFile(path.join(__dirname, "store.js"));
+  });
+
+  app.get("/cart.html", function(req, res) {
+    
+    res.sendFile(path.join(__dirname, "cart.html"));
   });
 
   app.get("/api/women", function(req, res) {
     
-        connection.query("select * from mens_shirts", function(err, response) {
+        connection.query("select * from womens_shirts", function(err, response) {
             if (err) throw err;
             res.send(response);
-            connection.end();
+            
         });
     
     res.sendFile(path.join(__dirname, "index.html"));
@@ -40,10 +61,25 @@ app.get("/", function(req, res) {
     connection.query("select * from mens_shirts", function(err, response) {
         if (err) throw err;
         res.send(response);
-        connection.end();
+        
+        
+    });
+
+res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/api/cart", function(req, res) {
+    
+    connection.query("select * from cart", function(err, response) {
+        if (err) throw err;
+        res.send(response);
+        
+        
     });
 
 res.sendFile(path.join(__dirname, "index.html"));
 });
   
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
+
+connection.end();
