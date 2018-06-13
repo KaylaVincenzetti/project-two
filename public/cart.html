@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script type="text/javascript" src="store.js"></script>
 </head>
 <body>
+    <div class="container">
+
+            <div class="row">
+                    <div class="col-md-4">
+                        <header id="main-header">Some Shirt Store</header>
+                    </div> 
+                    <div class="col-md-8">
+                            <nav class="navbar">
+                                    <a class="navbar-brand"></a>
+                                    <form class="form-inline">
+                                      <button class="btn" id="home-page" onclick="homePage()">Home</button>
+                                      <button class="btn" id="men-shirt" onclick="menPage()">men</button>
+                                      <button class="btn" id="women-shirt" onclick="womenPage()">women</button>
+                                      <button class="btn" id="cart-btn" onclick="cartPage()"><i class="fas fa-shopping-cart"></i></button>
+                                      <input class="form-control mr-sm-2" id="search" type="search" placeholder="Search" aria-label="Search">
+                                      <button class="btn" id="search-btn"><i class="fas fa-search"></i></button>
+                                    </form>
+                                  </nav>
+                          
+                          </div>
+                    </div> 
+                </div>
 
     <div id="cart">
         
     </div>
-    
+    </div>
 </body>
 </html>

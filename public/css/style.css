@@ -1,6 +1,7 @@
 #main-header {
     text-align: center;
     margin-top: 15px;
+    margin-right: 100px;
     background-color:
 }
 
@@ -19,6 +20,21 @@ footer {
  
 }
 
+#men-shirt {
+    margin-right: 10px;
+}
+
+#women-shirt {
+    margin-right: 10px;
+}
+
+#home-page {
+    margin-right: 10px;
+}
+
+#cart-btn {
+    margin-right: 10px;
+}
 /* .clearfix::after {
 	content: "";
 	display: block;
