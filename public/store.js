@@ -1,14 +1,23 @@
 function menPage() {
     location.href="men.html"
+    event.preventDefault();
 
 }
 
 function womenPage() {
     location.href="women.html"
+    event.preventDefault();
 }
 
 function cartPage() {
     location.href="cart.html"
+    event.preventDefault();
+}
+
+function homePage() {
+    location.href="index.html"
+    event.preventDefault();
+
 }
 
 
@@ -78,3 +87,18 @@ function displayCart() {
 }
 
 displayCart();
+
+$(".add-cart").on("click", function(){
+    var id = $(this).attr("id");
+
+    $.get("/shop/add/:id", id, function(response) {
+       
+        
+        $.post("/shop/add", response, function(data) {
+
+            res.redirect("/api/cart");
+        })
+   
+    })
+
+});
