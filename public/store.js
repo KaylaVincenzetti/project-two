@@ -23,20 +23,17 @@ function homePage() {
 
 function displayMensShirts() {
 
-    var menShirt = $(this).attr("data-name");
-    var queryURL = "/api/men";
-
     $.ajax({
-        url: queryURL,
+        url: "/api/men",
         method: "GET"
-    }).then(function(response) {
-        console.log(response);
-
-       
-        for (var i = 0; i < response.length;i++) {
-            console.log(response[i]);
-            $("#mens-products").prepend("<div>"+response[i].title+" "+response[i].size+" "+response[i].color+" "+"</div>");
-        }
+    }).done(function(shirts){
+        for (var i = 0; i < shirts.length; i++) {
+    var product = $("<div>");
+    product.append("<h2>" + shirts[i].title + " - Color: " + shirts[i].color);
+    product.append("<h2>" + "Size: " + shirts[i].size + " - Color: " + shirts[i].price);
+    product.append("<img src='" + shirts[i].image_url + "' alt='" + shirts[i].title + "' />");
+    $("#mens-products").append(product);
+}
     });
 
 }
@@ -47,22 +44,20 @@ displayMensShirts();
 
 function displayWomenShirt() {
 
-    var womenShirt = $(this).attr("data-name");
-    var queryURL = "/api/women";
-
-    $.ajax({
-        url: queryURL,
+        $.ajax({
+        url: "/api/women",
         method: "GET"
-    }).then(function(response) {
-        console.log(response);
-
-       
-        for (var j = 0; j < response.length;j++) {
-            console.log(response[j]);
-            $("#womens-products").prepend("<div>"+response[j].title+" "+response[j].size+" "+response[j].color+" "+"</div>");
+        }).done(function(shirts){
+        for (var i = 0; i < shirts.length; i++) {
+        var product = $("<div>");
+        product.append("<h2>" + shirts[i].title + " - Color: " + shirts[i].color);
+        product.append("<h2>" + "Size: " + shirts[i].size + " - Color: " + shirts[i].price);
+        product.append("<img src='" + shirts[i].image_url + "' alt='" + shirts[i].title + "' />");
+        $("#womens-products").append(product);
         }
-    });
-}
+        });
+
+    }
 
 
 displayWomenShirt();

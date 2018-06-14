@@ -29,9 +29,9 @@ app.get("/men.html", function(req, res) {
 
   app.get("/api/women", function(req, res) {
     
-        connection.query("select * from inventory where gender = 'F'", function(err, response) {
+        connection.query("select * from inventory where gender = 'F' ", function(err, response) {
             if (err) throw err;
-            res.send(response);
+            res.json(response);
             
         });
     
@@ -43,7 +43,7 @@ app.get("/men.html", function(req, res) {
     
     connection.query("select * from inventory where gender = 'M' ", function(err, response) {
         if (err) throw err;
-        res.send(response);
+        res.json(response);
         
         
     });
