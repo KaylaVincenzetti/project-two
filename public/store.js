@@ -35,6 +35,20 @@ function addToCartWomen(id) {
     event.preventDefault();
 }
 
+function addToCartMen(id) {
+    console.log(id);
+    console.log("Adding to cart: item "+id);
+         $.ajax({
+             url: "/shop/add/",
+             data: {id:id},
+             method: "POST"
+         }).then(function(response) {
+            console.log(response);  
+            location.href='cart.html';
+        });
+    location.href="cart.html"
+    event.preventDefault();
+}
 
 function displayMensShirts() {
 
@@ -106,7 +120,7 @@ $(".add-cart").on("click", function(){
     var id = $(this).attr("id");
     $.post("/shop/add/" + id, function(data) {
         console.log("Item added to database");
-        // res.redirect("/api/cart");
+        res.redirect("/api/cart");
         
     })
 

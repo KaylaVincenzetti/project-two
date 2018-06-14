@@ -63,7 +63,36 @@ app.get("/api/cart", function(req, res) {
 //res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
+// app.get("/shop/add/:id", function(req, res) {
+//     var queryString = "SELECT * FROM inventory WHERE ID (?)";
+//     connection.query(queryString, [id], function(err, result) {
+//     if (err) {
+//         throw err;
+//     }
+    
+//     });
+//     res.json(result);
+// });
+
+// app.post("/shop/add/:id", function(req, res) {
+//     var id = req.params.id;
+//     console.log(id);
+//     var queryString = "insert into cart (product_id) values (??)";
+//     connection.query(queryString, [id], function(err, result) {
+//     if (err) {
+//         throw err;
+//     }
+    
+//     });
+//     res.json(result);
+
+    
+// })
+
+// }
+
 app.get("/shop/add/:id", function(req, res) {
+    var id = req.params('id');
     var queryString = "SELECT * FROM inventory WHERE ID (?)";
     connection.query(queryString, [id], function(err, result) {
     if (err) {
@@ -74,21 +103,16 @@ app.get("/shop/add/:id", function(req, res) {
     res.json(result);
 });
 
-app.post("/shop/add/:id", function(req, res) {
-    var id = req.params.id;
+app.post("/shop/add", function(req, res) {
+    var id=req.param('id');
     console.log(id);
-    var queryString = "insert into cart (product_id) values (??)";
+    var queryString = "INSERT INTO cart set product_id=(?)";
     connection.query(queryString, [id], function(err, result) {
     if (err) {
         throw err;
     }
-    
     });
-    res.json(result);
+    res.send(true);
+});
 
-    
-})
-
-}
-
-
+};

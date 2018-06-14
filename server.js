@@ -19,6 +19,28 @@ app.use(express.static("public"))
 
 require("./controller/shopControler.js")(app)
 
+// app.get("/shop/add/:id", function(req, res) {
+//     var queryString = "SELECT * FROM inventory WHERE ID (?)";
+//     connection.query(queryString, [id], function(err, result) {
+//     if (err) {
+//         throw err;
+//     }
+    
+//     });
+//     res.json(result);
+// });
+
+// app.post("/shop/add", function(req, res) {
+//     var id=req.param('id');
+//     console.log(id);
+//     var queryString = "INSERT INTO cart set product_id=(?)";
+//     connection.query(queryString, [id], function(err, result) {
+//     if (err) {
+//         throw err;
+//     }
+//     });
+//     res.send(true);
+// });
 
 
 
