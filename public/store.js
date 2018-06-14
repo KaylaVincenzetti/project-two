@@ -106,7 +106,7 @@ $(".add-cart").on("click", function(){
     var id = $(this).attr("id");
     $.post("/shop/add/" + id, function(data) {
         console.log("Item added to database");
-        res.redirect("/api/cart");
+        // res.redirect("/api/cart");
         
     })
 
