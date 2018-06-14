@@ -64,7 +64,7 @@ app.get("/api/cart", function(req, res) {
 });
 
 app.get("/shop/add/:id", function(req, res) {
-    var queryString = "SELECT * FROM mens_shirts WHERE ID (?)";
+    var queryString = "SELECT * FROM inventory WHERE ID (?)";
     connection.query(queryString, [id], function(err, result) {
     if (err) {
         throw err;
@@ -79,3 +79,5 @@ app.post("/shop/add", function(req, res) {
 })
 
 }
+
+

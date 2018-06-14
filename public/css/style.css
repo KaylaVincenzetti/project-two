@@ -1,8 +1,10 @@
 #main-header {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-right: 100px;
-    background-color:
+    font-size: 24px;
+    
+
 }
 
 footer {
@@ -12,11 +14,15 @@ footer {
 
 #men-price {
     float: right;
+    margin-top: 150px;
+    margin-right: 200px;
  
 }
 
 #women-price {
     float: right;
+    margin-top: 150px;
+    margin-right: 200px;
  
 }
 
@@ -41,3 +47,9 @@ footer {
 	clear: both;
 } */
 
+#footer-row {
+    margin-top: 15px;
+    font-size: 50px;
+    text-align: center;
+    margin-left: 450px;   
+}

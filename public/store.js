@@ -20,6 +20,11 @@ function homePage() {
 
 }
 
+function addToCart() {
+    location.href="cart.html"
+    event.preventDefault();
+}
+
 
 function displayMensShirts() {
 
@@ -29,9 +34,11 @@ function displayMensShirts() {
     }).done(function(shirts){
         for (var i = 0; i < shirts.length; i++) {
     var product = $("<div>");
+    var button = $("<div>");
     product.append("<h2>" + shirts[i].title + " - Color: " + shirts[i].color);
     product.append("<h2>" + "Size: " + shirts[i].size + " - Color: " + shirts[i].price);
     product.append("<img src='" + shirts[i].image_url + "' alt='" + shirts[i].title + "' />");
+    product.append('<button class="add-cart" onclick="addToCart('+shirts[i].id+')">Add To Cart</button>');
     $("#mens-products").append(product);
 }
     });
@@ -50,9 +57,11 @@ function displayWomenShirt() {
         }).done(function(shirts){
         for (var i = 0; i < shirts.length; i++) {
         var product = $("<div>");
+        var button = $("<div>");
         product.append("<h2>" + shirts[i].title + " - Color: " + shirts[i].color);
         product.append("<h2>" + "Size: " + shirts[i].size + " - Color: " + shirts[i].price);
         product.append("<img src='" + shirts[i].image_url + "' alt='" + shirts[i].title + "' />");
+        product.append('<button class="add-cart" onclick="addToCart('+shirts[i].id+')">Add To Cart</button>');
         $("#womens-products").append(product);
         }
         });
@@ -70,13 +79,13 @@ function displayCart() {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
-        console.log(response);
+    }).then(function(shirts) {
+        console.log(shirts);
 
        
-        for (var o = 0; o < response.length;o++) {
-            console.log(response[o]);
-            $("#cart").prepend("<div>"+response[o].table_name+" "+response[o].sub_id+" "+"</div>");
+        for (var i = 0; i < shirts.length;i++) {
+            console.log(shirts[i]);
+            $("#cart").prepend("<div>"+shirts[i].inventory+" "+shirts[i].product_id+" "+"</div>");
         }
     });
 }
@@ -85,11 +94,20 @@ displayCart();
 
 $(".add-cart").on("click", function(){
     var id = $(this).attr("id");
+    $.post("/shop/add/:id", shirts, function(data) {
+        res.redirect("/api/cart");
+    })
 
-    $.get("/shop/add/:id", id, function(response) {
+});
+
+
+$(".add-cart").on("click", function(){
+    var id = $(this).attr("id");
+
+    $.get("/shop/add/:id", id, function(shirts) {
        
         
-        $.post("/shop/add", response, function(data) {
+        $.post("/shop/add", shirts, function(data) {
 
             res.redirect("/api/cart");
         })
@@ -97,3 +115,8 @@ $(".add-cart").on("click", function(){
     })
 
 });
+
+
+
+
+
