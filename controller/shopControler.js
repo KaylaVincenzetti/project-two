@@ -29,7 +29,7 @@ app.get("/men.html", function(req, res) {
 
   app.get("/api/women", function(req, res) {
     
-        connection.query("select * from womens_shirts", function(err, response) {
+        connection.query("select * from inventory where gender = 'F'", function(err, response) {
             if (err) throw err;
             res.send(response);
             
@@ -41,7 +41,7 @@ app.get("/men.html", function(req, res) {
 
   app.get("/api/men", function(req, res) {
     
-    connection.query("select * from mens_shirts", function(err, response) {
+    connection.query("select * from inventory where gender = 'M' ", function(err, response) {
         if (err) throw err;
         res.send(response);
         
@@ -76,6 +76,6 @@ app.get("/shop/add/:id", function(req, res) {
 
 app.post("/shop/add", function(req, res) {
     
-});
+})
 
-};
+}
