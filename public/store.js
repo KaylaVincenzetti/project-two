@@ -20,7 +20,17 @@ function homePage() {
 
 }
 
-function addToCart() {
+function addToCartWomen(id) {
+    console.log(id);
+    console.log("Adding to cart: item "+id);
+         $.ajax({
+             url: "/shop/add/",
+             data: {id:id},
+             method: "POST"
+         }).then(function(response) {
+            console.log(response);  
+            location.href='cart.html';
+        });
     location.href="cart.html"
     event.preventDefault();
 }
@@ -38,7 +48,7 @@ function displayMensShirts() {
     product.append("<h2>" + shirts[i].title + " - Color: " + shirts[i].color);
     product.append("<h2>" + "Size: " + shirts[i].size + " - Color: " + shirts[i].price);
     product.append("<img src='" + shirts[i].image_url + "' alt='" + shirts[i].title + "' />");
-    product.append('<button class="add-cart" onclick="addToCart('+shirts[i].id+')">Add To Cart</button>');
+    product.append('<button class="add-cart" onclick="addToCartMen('+shirts[i].id+')">Add To Cart</button>');
     $("#mens-products").append(product);
 }
     });
@@ -61,7 +71,7 @@ function displayWomenShirt() {
         product.append("<h2>" + shirts[i].title + " - Color: " + shirts[i].color);
         product.append("<h2>" + "Size: " + shirts[i].size + " - Color: " + shirts[i].price);
         product.append("<img src='" + shirts[i].image_url + "' alt='" + shirts[i].title + "' />");
-        product.append('<button class="add-cart" onclick="addToCart('+shirts[i].id+')">Add To Cart</button>');
+        product.append('<button class="add-cart" onclick="addToCartWomen('+shirts[i].id+')">Add To Cart</button>');
         $("#womens-products").append(product);
         }
         });
@@ -94,27 +104,16 @@ displayCart();
 
 $(".add-cart").on("click", function(){
     var id = $(this).attr("id");
-    $.post("/shop/add/:id", shirts, function(data) {
+    $.post("/shop/add/" + id, function(data) {
+        console.log("Item added to database");
         res.redirect("/api/cart");
-    })
-
-});
-
-
-$(".add-cart").on("click", function(){
-    var id = $(this).attr("id");
-
-    $.get("/shop/add/:id", id, function(shirts) {
-       
         
-        $.post("/shop/add", shirts, function(data) {
-
-            res.redirect("/api/cart");
-        })
-   
     })
 
 });
+
+
+
 
 
 

@@ -74,7 +74,18 @@ app.get("/shop/add/:id", function(req, res) {
     res.json(result);
 });
 
-app.post("/shop/add", function(req, res) {
+app.post("/shop/add/:id", function(req, res) {
+    var id = req.params.id;
+    console.log(id);
+    var queryString = "insert into cart (product_id) values (??)";
+    connection.query(queryString, [id], function(err, result) {
+    if (err) {
+        throw err;
+    }
+    
+    });
+    res.json(result);
+
     
 })
 
